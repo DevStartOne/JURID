@@ -1,0 +1,583 @@
+/* Definição de Cores Empresariais */
+:root {
+    --color-primary: #007bff; /* Azul Claro/Brilhante (Destaque) */
+    --color-secondary: #0056b3; /* Azul Escuro (Botões Principais) */
+    --color-background: #bbd4ed; /* Branco Suave */
+    --color-surface: #ffffff; /* Branco Puro (Superfícies) */
+    --color-text-dark: #343a40; /* Preto/Cinza Escuro (Texto principal) */
+    --color-text-light: #ffffff; /* Branco (Texto sobre fundos azuis) */
+    --color-success: #28a745; /* Verde (Sucesso, para respostas) */
+    --color-danger: #dc3545; /* Vermelho (Excluir/Perigo) */
+    --color-edit: #ffc107; /* Amarelo (Editar) */
+}
+
+/* --- Estilos Globais e Centralização da Tela Inicial --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-background); 
+    
+    display: flex;
+    justify-content: center; 
+    align-items: center;    
+    
+    min-height: 100vh; 
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    font-size: 16px; 
+    background-color: var(--color-surface); 
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    max-width: 600px; 
+    width: 90%;
+}
+
+/* --- Estilo do Título --- */
+#welcome-message {
+    color: #1d242d; 
+    margin-bottom: 30px;
+    font-size: 2.2em;
+    font-weight: bold;
+}
+
+/* --- Estilos dos Botões de Navegação --- */
+.button-group {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.menu-button {
+    background-color: var(--color-secondary); 
+    color: var(--color-text-light); 
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.1s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.menu-button:hover {
+    background-color: #1d242d; 
+    transform: translateY(-2px);
+}
+
+.menu-button:active {
+    transform: translateY(0);
+}
+
+
+/* ------------------------------------------- */
+/* --- Estilos do Modal (Tela Cheia / Fullscreen) - CORRIGIDO O BUG DO DISPLAY CONFLITANTE --- */
+/* ------------------------------------------- */
+.modal {
+    display: none; /* Estado inicial: escondido. JS altera para 'flex' ao abrir. */
+    position: fixed; 
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); 
+    
+    padding: 0; 
+    
+    /* Permite a rolagem no modal principal */
+    overflow-y: auto; 
+    
+    /* Usamos flexbox para centralizar o conteúdo. O JS irá adicionar 'display: flex' */
+    justify-content: center;
+    align-items: flex-start; /* Permite que o conteúdo desça e comece no topo */
+}
+
+.modal-content {
+    background-color: var(--color-surface); 
+    /* A margem superior e inferior empurram o conteúdo para baixo e dão espaço */
+    margin: 20px auto; 
+    
+    padding: 30px;
+    border-radius: 8px; 
+    color: var(--color-text-dark); 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    position: relative;
+    text-align: left; 
+    
+    width: 95%; 
+    max-width: 1400px; 
+    box-sizing: border-box; 
+
+    /* Garante que o fundo branco ocupe no mínimo a altura da tela - margens (40px) */
+    min-height: calc(100vh - 40px);
+}
+
+/* Regra Adicional para Melhorar a Rolagem do Conteúdo */
+@media (max-height: 700px) {
+    .modal-content {
+        min-height: 80vh;
+    }
+}
+
+
+/* Botão de Fechar (X) */
+.close-button {
+    color: var(--color-rimary); 
+    float: right;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+/* Botão Adicionar Flash Card */
+.add-button {
+    background-color: var(--color-text-dark); 
+    color: var(--color-text-light); 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+    font-weight: bold;
+    display: block; 
+}
+
+.add-button:hover {
+    background-color: #0069d9;
+}
+
+
+/* ------------------------------------------- */
+/* --- Estilos do Formulário de Adição --- */
+/* ------------------------------------------- */
+
+.form-container {
+    padding: 20px;
+    border: 1px solid #ccc; 
+    border-radius: 8px;
+    margin-top: 20px;
+    background-color: var(--color-surface); 
+
+    max-width: 350px; 
+    margin: 30px auto; 
+}
+
+.form-container h3 {
+    color: var(--color-secondary); 
+    border-bottom: 1px solid var(--color-primary);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block; 
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--color-text-dark);
+}
+
+/* Estilo para as áreas de texto (Pergunta e Resposta) */
+textarea, input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box; 
+    border: 1px solid #ced4da; 
+    border-radius: 4px;
+    background-color: #f1f1f1; 
+    color: var(--color-text-dark); 
+    font-family: Arial, sans-serif;
+    resize: vertical; 
+}
+
+/* Botões de Ação do Formulário */
+.submit-button {
+    background-color: var(--color-success); 
+    color: var(--color-text-light); 
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+.cancel-button {
+    background-color: #6c757d; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #5a6268;
+}
+
+
+/* ------------------------------------------- */
+/* --- Estilos para Exibição dos Cards (Flashcards) --- */
+/* ------------------------------------------- */
+
+#flashcard-display {
+    padding-top: 20px;
+    padding-left: 10px; 
+    padding-right: 10px;
+    min-height: 200px; 
+    width: 100%; 
+}
+
+/* Container do Flexbox */
+.flashcard-grid {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    justify-content: center; 
+    align-items: flex-start; 
+}
+
+/* Mensagem quando não há cards */
+.no-cards-message {
+    color: var(--color-secondary); 
+    margin-top: 50px;
+    width: 100%; 
+    text-align: center;
+}
+
+
+/* Estilo da "Caixinha" do Flash Card que Vira e Botões de Ação */
+.flashcard-container {
+    perspective: 1000px; 
+    height: 230px; 
+    width: 250px; 
+    max-width: 250px; 
+    min-width: 150px; 
+    margin: 0; 
+    cursor: pointer;
+}
+
+.flashcard {
+    position: relative;
+    width: 100%;
+    height: 180px; 
+    text-align: center;
+    transition: transform 0.6s; 
+    transform-style: preserve-3d; 
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Estado "Virado" */
+.flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard-front, .flashcard-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box; 
+    word-wrap: break-word; 
+}
+
+.flashcard-front {
+    background-color: var(--color-surface); 
+    color: var(--color-text-dark); 
+    border: 2px solid var(--color-primary); 
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.flashcard-back {
+    background-color: var(--color-secondary); 
+    color: var(--color-text-light); 
+    transform: rotateY(180deg); 
+    border: 2px solid var(--color-secondary); 
+    font-size: 1em;
+}
+
+.flashcard-front small {
+    color: var(--color-secondary); 
+}
+
+.flashcard-front p, .flashcard-back p {
+    margin: 0;
+    max-height: 100%; 
+    overflow: hidden; 
+    display: -webkit-box;
+    -webkit-line-clamp: 5; 
+    -webkit-box-orient: vertical;
+}
+
+/* Contêiner dos botões abaixo do card */
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    height: 40px; 
+    box-sizing: border-box;
+}
+
+/* Estilo base para os botões de ação */
+.action-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    flex-grow: 1; 
+    margin: 0 5px;
+}
+
+/* Estilo específico para o botão EDITAR */
+.edit-button {
+    background-color: var(--color-edit); 
+    color: var(--color-text-dark);
+}
+.edit-button:hover {
+    background-color: #e0a800;
+}
+
+/* Estilo específico para o botão EXCLUIR */
+.delete-button {
+    background-color: var(--color-danger); 
+    color: white;
+}
+.delete-button:hover {
+    background-color: #bd2130;
+}
+
+/* Remove o botão "Ver Resposta" que não é mais necessário */
+.view-answer-btn {
+    display: none;
+}
+
+/* ------------------------------------------- */
+/* --- NOVO MÓDULO: ESTILOS DO QUIZ --- */
+/* ------------------------------------------- */
+
+/* Estilo para cada card de questão */
+.quiz-question-card {
+    background-color: var(--color-surface);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-question-card h3 {
+    color: var(--color-secondary);
+    margin-top: 0;
+    font-size: 1.1em;
+}
+
+/* Container das opções */
+.options-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Estilo de cada linha de opção (caixinha e texto) */
+.option-row {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.option-row:hover {
+    background-color: #f1f1f1;
+}
+
+/* Estilo do input (radio button) */
+.option-row input[type="radio"] {
+    /* Esconde o radio padrão */
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Estilo do label (Caixinha Customizada) */
+.option-row label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-grow: 1; /* Ocupa o espaço restante */
+    color: var(--color-text-dark);
+    margin-left: 5px; /* Ajuste para o padding */
+}
+
+/* Cria a caixinha customizada (Antes do texto do label) */
+.option-row label::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--color-secondary); /* Borda Azul Escura */
+    border-radius: 50%; /* Formato de círculo */
+    margin-right: 15px;
+    background-color: var(--color-surface);
+    transition: background-color 0.2s, border-color 0.2s;
+    box-sizing: border-box;
+}
+
+/* Quando o radio é checado (Caixinha Preenchida) */
+.option-row input[type="radio"]:checked + label::before {
+    background-color: var(--color-primary); /* Azul de Destaque */
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-surface) inset; /* Efeito de anel branco */
+}
+
+/* Estilo para feedback (Correto/Incorreto) */
+.feedback-message {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+/* Estilo do card após a checagem */
+.correct-answer {
+    border-left: 5px solid var(--color-success); /* Borda verde */
+}
+
+.wrong-answer {
+    border-left: 5px solid var(--color-danger); /* Borda vermelha */
+}
+
+/* Ajuste do botão verificar para ser mais chamativo */
+#check-answers-button {
+    width: 100%;
+    background-color: var(--color-secondary);
+}
+
+#quiz-results {
+    border: 1px solid #ced4da;
+    color: var(--color-text-dark);
+}
+
+#quiz-results p {
+    font-size: 1.1em;
+}
+
+
+/* ------------------------------------------- */
+/* --- Responsividade (Media Queries) --- */
+/* ------------------------------------------- */
+
+/* Para telas de tablets (601px até 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .flashcard-front, .flashcard-back {
+        font-size: 1em;
+    }
+}
+
+/* Estilos para telas menores que 600px (celulares) */
+@media (max-width: 600px) {
+    
+    /* Página Inicial */
+    .container {
+        padding: 20px; 
+        width: 95%; 
+    }
+
+    #welcome-message {
+        font-size: 1.8em; 
+    }
+
+    /* Formulário de Adição em celulares */
+    .form-container {
+        max-width: 95%;
+    }
+
+    /* Formulário e Botões */
+    .submit-button,
+    .cancel-button {
+        padding: 10px 15px; 
+        font-size: 0.9em;
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    /* Ajusta a altura total do card para celular */
+    .flashcard-container {
+        width: 100%; 
+        max-width: none; 
+        min-width: 100%;
+        height: 210px; 
+    }
+    .flashcard {
+        height: 150px; 
+    }
+
+    .flashcard-front, .flashcard-back {
+        font-size: 0.95em; 
+        padding: 15px;
+    }
+    
+    /* Ajusta a margem dos botões de ação em celulares */
+    .card-actions {
+        padding-top: 5px;
+    }
+    .action-button {
+        margin: 0 2px;
+    }
+
+    /* Ajuste para quiz em celular */
+    .quiz-question-card {
+        padding: 15px;
+    }
+
+    .option-row label::before {
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+    }
+}

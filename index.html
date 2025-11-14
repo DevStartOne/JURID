@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão de Direito</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="welcome-message"></h1>
+        
+        <div class="button-group">
+            <button class="menu-button" onclick="loadContent('flashcards-juridico')">
+                Flash Cards Jurídicos
+            </button>
+            <button class="menu-button" onclick="loadContent('simulado-multipla-escolha')">
+                Simulado de Múltipla Escolha
+            </button>
+          
+        </div>
+    </div>
+
+    <div id="flashcard-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <h2>Flash Cards Jurídicos</h2>
+            <p>Revise conceitos rapidamente ou adicione seus próprios cards.</p>
+            
+            <button class="add-button" onclick="toggleAddForm()">
+                Adicionar Novo Flash Card
+            </button>
+
+            <div id="add-flashcard-form" class="form-container" style="display:none;">
+                <h3>Adicionar Novo Flash Card</h3>
+                <form id="new-card-form">
+                    <div class="form-group">
+                        <label for="card-question">Pergunta/Conceito:</label>
+                        <textarea id="card-question" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="card-answer">Resposta/Definição:</label>
+                        <textarea id="card-answer" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" id="submit-card-button" class="submit-button">Salvar Card</button>
+                    <button type="button" class="cancel-button" onclick="toggleAddForm()">Cancelar</button>
+                </form>
+            </div>
+
+            <div id="flashcard-display">
+                </div>
+            
+        </div>
+    </div>
+
+    <div id="quiz-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeQuizModal()">&times;</span>
+            <h2>Simulado de Múltipla Escolha (25 Questões Aleatórias)</h2>
+            <p>Responda às questões e clique em "Verificar Respostas" no final.</p>
+            
+            <div id="quiz-questions-container">
+                <p style="text-align: center; color: var(--color-secondary);">Carregando questões...</p>
+            </div>
+            
+            <button id="check-answers-button" class="add-button" style="margin-top: 30px;" onclick="checkQuizAnswers()">
+                Verificar Respostas
+            </button>
+
+            <div id="quiz-results" style="margin-top: 30px; padding: 15px; border-radius: 5px; display: none;">
+                </div>
+
+        </div>
+    </div>
+    
+    <div id="add-quiz-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeAddQuizModal()">&times;</span>
+            <h2>Adicionar Nova Questão de Múltipla Escolha</h2>
+            <p>Preencha a pergunta e as opções. O sistema embaralhará a ordem e preencherá as alternativas restantes com opções aleatórias (máximo de 5 opções).</p>
+            
+            <form id="new-quiz-form" onsubmit="saveNewQuizQuestion(event)">
+                <div class="form-group">
+                    <label for="quiz-question-text">Pergunta/Enunciado:</label>
+                    <textarea id="quiz-question-text" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group" style="background-color: #e6ffec; padding: 10px; border-radius: 5px;">
+                    <label for="quiz-correct-option" style="color: var(--color-success);">Resposta **CORRETA**:</label>
+                    <textarea id="quiz-correct-option" rows="2" required></textarea>
+                </div>
+                
+                <hr>
+
+                <p style="font-weight: bold; margin-bottom: 10px;">Alternativas Incorretas (Preencha 1, 2, 3 ou 4. O sistema tentará completar para 5 opções):</p>
+
+                <div class="form-group">
+                    <label for="quiz-wrong-option-1">Alternativa Incorreta 1 (Obrigatória):</label>
+                    <textarea id="quiz-wrong-option-1" rows="2" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="quiz-wrong-option-2">Alternativa Incorreta 2:</label>
+                    <textarea id="quiz-wrong-option-2" rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="quiz-wrong-option-3">Alternativa Incorreta 3:</label>
+                    <textarea id="quiz-wrong-option-3" rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="quiz-wrong-option-4">Alternativa Incorreta 4:</label>
+                    <textarea id="quiz-wrong-option-4" rows="2"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button" style="width: 100%; margin-top: 20px;">
+                    Salvar Nova Questão
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

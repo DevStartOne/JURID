@@ -343,6 +343,57 @@ function createTestCards() {
             { id: 48, question: "Qual a diferença entre 'Lei' e 'Decreto'", answer: "Lei é criada pelo Poder Legislativo, Decreto pelo Poder Executivo para regulamentar uma lei." },
             { id: 49, question: "O que é Jurisprudência", answer: "Conjunto de decisões e interpretações das leis pelos tribunais." },
             { id: 50, question: "O que é 'Direito Civil", answer: "Ramo do direito que rege as relações entre particulares." },
+            {
+    "id": 51,
+    "question": "O que é 'Direito Constitucional'?",
+    "answer": "Ramo do Direito Público que estuda e interpreta a Constituição, norma fundamental de um Estado."
+  },
+  {
+    "id": 52,
+    "question": "Qual é a principal função da Constituição Federal?",
+    "answer": "Organizar o Estado, limitar o poder e estabelecer os direitos e garantias fundamentais dos cidadãos."
+  },
+  {
+    "id": 53,
+    "question": "O que são 'Direitos Fundamentais'?",
+    "answer": "Conjunto de direitos essenciais para a dignidade da pessoa humana, como vida, liberdade, igualdade e propriedade."
+  },
+  {
+    "id": 54,
+    "question": "O que é a 'Hierarquia das Normas' (Pirâmide de Kelsen)?",
+    "answer": "Estrutura que ordena as normas jurídicas, colocando a Constituição no topo, seguida por leis e, depois, por decretos e regulamentos."
+  },
+  {
+    "id": 55,
+    "question": "O que significa o princípio da 'Legalidade'?",
+    "answer": "Ninguém será obrigado a fazer ou deixar de fazer alguma coisa senão em virtude de lei (art. 5º, II, CF)."
+  },
+  {
+    "id": 56,
+    "question": "O que é 'Poder Constituinte Originário'?",
+    "answer": "Poder inicial e ilimitado de criar uma nova Constituição para o Estado, geralmente após revolução ou independência."
+  },
+  {
+    "id": 57,
+    "question": "O que é o princípio da 'Isonomia'?",
+    "answer": "Tratar igualmente os iguais e desigualmente os desiguais, na medida de suas desigualdades (igualdade formal e material)."
+  },
+  {
+    "id": 58,
+    "question": "O que é 'Fonte do Direito'?",
+    "answer": "O local ou forma de onde o Direito brota, sendo a Lei a fonte primária no Brasil, seguida por costumes, jurisprudência e doutrina."
+  },
+  {
+    "id": 59,
+    "question": "Qual a diferença entre 'Direito Público' e 'Direito Privado'?",
+    "answer": "O Público trata das relações em que o Estado atua com supremacia (ex: Constitucional), e o Privado trata das relações entre particulares (ex: Civil)."
+  },
+  {
+    "id": 60,
+    "question": "O que significa 'Vacatio Legis'?",
+    "answer": "O período entre a publicação de uma lei e a sua entrada em vigor, ou seja, o tempo que a lei tem para 'descansar' antes de ser obrigatória."
+  },
+        
             
         
     ];
